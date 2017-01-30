@@ -139,7 +139,7 @@ def _apns_check_errors(sock):
 
 
 def _apns_send(
-	token, alert, badge=None, sound=None, category=None, content_available=False,
+	token, alert, badge=None, sound=None, category=None, url=None, content_available=False,
 	action_loc_key=None, loc_key=None, loc_args=[], extra={}, identifier=0,
 	expiration=None, priority=10, socket=None, certfile=None, mutable_content=False
 ):
@@ -165,6 +165,9 @@ def _apns_send(
 
 	if sound is not None:
 		aps_data["sound"] = sound
+
+	if url is not None:
+		aps_data["url"] = url
 
 	if category is not None:
 		aps_data["category"] = category
